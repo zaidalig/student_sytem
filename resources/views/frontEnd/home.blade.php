@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'StMS- Abdul Mabud')
+@section('title', 'StMS- Muhammad Zaid Ali')
     
 
 

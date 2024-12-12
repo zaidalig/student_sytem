@@ -1,20 +1,20 @@
 @extends('masteradmin')
 
 @section('title')
-    Update Student
+Update Student
 @endsection
 
 @section('content')
 <style>
-td{
-    padding: 4px !important;
-}
+    td {
+        padding: 4px !important;
+    }
 </style>
-    <div class="row mt-5">
-        <div class="col-md-6 offset-md-3">
-            <h3 class="text text-center text-primary">Update Student</h3>
-            <form action="{{ route('admin.student.update', $student->id) }}" method="POST" class="form-group">
-                @csrf
+<div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+        <h3 class="text text-center text-primary">Update Student</h3>
+        <form action="{{ route('admin.student.update', $student->id) }}" method="POST" class="form-group">
+            @csrf
             <table class="table table-borderless">
                 <tr>
                     <td>Student Name</td>
@@ -27,14 +27,20 @@ td{
                 <tr>
                     <td>Date of Birth</td>
                     <td>
-                        <input type="date" name="Birth" class="form-control" value="{{ $student->Birth }}"> 
+                        <input type="date" name="Birth" class="form-control" value="{{ $student->Birth }}">
                     </td>
                 </tr>
                 <tr>
                     <td>Gender</td>
                     <td>
-                        <label><input type="radio" name="Gender" value="Male">Male</label>
-                        <label><input type="radio" name="Gender" value="Female">Female</label>
+                        <label>
+                            <input type="radio" name="Gender" value="Male" {{ strtolower($student->Gender) === 'male' ? 'checked' : '' }}>
+                            Male
+                        </label>
+                        <label>
+                            <input type="radio" name="Gender" value="Female" {{ strtolower($student->Gender) === 'female' ? 'checked' : '' }}>
+                            Female
+                        </label>
                     </td>
                 </tr>
                 <tr>
@@ -42,10 +48,10 @@ td{
                     <td>
                         <select name="Class" id="" class="form-control">
                             @foreach ($classes as $class)
-                              <option value="{{ $class->className }}">{{ $class->className }}</option>
+                                <option value="{{ $class->className }}">{{ $class->className }}</option>
                             @endforeach
-                            
-                           
+
+
                         </select>
                     </td>
                 </tr>
@@ -56,12 +62,13 @@ td{
                 <tr>
                     <td>Father Name</td>
                     <td>
-                      <input type="text" name="FatherName" class="form-control" value="{{ $student->fatherName }}">
+                        <input type="text" name="FatherName" class="form-control" value="{{ $student->fatherName }}">
                     </td>
                 </tr>
                 <tr>
                     <td>Father Phone</td>
-                    <td><input type="text" name="FatherPhone" class="form-control" value="{{ $student->fatherPhone }}"></td>
+                    <td><input type="text" name="FatherPhone" class="form-control" value="{{ $student->fatherPhone }}">
+                    </td>
                 </tr>
                 <tr>
                     <td>Status</td>
@@ -70,14 +77,15 @@ td{
                             <option value="Publish">Publish</option>
                             <option value="Unpublish">Unpublish</option>
                         </select>
-                    </td>   
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Update Student Info" name="updateStudent" class="btn btn-primary"></td>
+                    <td><input type="submit" value="Update Student Info" name="updateStudent" class="btn btn-primary">
+                    </td>
                 </tr>
             </table>
         </form>
-        </div>
     </div>
+</div>
 @endsection
